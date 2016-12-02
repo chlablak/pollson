@@ -16,23 +16,18 @@
 
     <!-- Join a Poll -->
       <article id="join" class="panel">
-        <header>
-          <h2>Polls</h2>
-        </header>
+        <app-join></app-join>
       </article>
 
     <!-- Create a Poll -->
       <article id="create" class="panel">
-        <header>
-          <h2>Polls</h2>
-        </header>
+        <app-create></app-create>
       </article>
 
 		<!-- User -->
 			<article id="user" class="panel">
-				<header>
-					<h2>User</h2>
-				</header>
+        <app-user *ngIf="authService.authentificated()"></app-user>
+        <app-user-login *ngIf="!authService.authentificated()"></app-user-login>
 			</article>
 
 	</div>

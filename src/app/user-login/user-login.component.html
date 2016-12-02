@@ -1,0 +1,39 @@
+<!-- Here the template for log in and register -->
+<section>
+  <h3>Log in</h3>
+  <p>Enter your credentials to log in:</p>
+  <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <div class="row">
+      <div class="6u 12u$(mobile)">
+        <input type="email" formControlName="email" placeholder="Email">
+      </div>
+      <div class="6u$ 12u$(mobile)">
+        <input type="password" formControlName="password" placeholder="Password">
+      </div>
+      <div class="12u$">
+        <input type="submit" value="Log in">
+      </div>
+    </div>
+  </form>
+</section>
+<hr>
+<section>
+  <h3>Create an account</h3>
+  <p>Don't have an account yet? Simply create one:</p>
+  <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
+    <div class="row">
+      <div class="12u$">
+        <input type="email" formControlName="email" placeholder="Email">
+      </div>
+      <div class="6u 12u$(mobile)">
+        <input type="password" formControlName="password" placeholder="Password">
+      </div>
+      <div class="6u$ 12u$(mobile)">
+        <input type="password" formControlName="passwordConfirm" placeholder="Confirm password">
+      </div>
+      <div class="12u$">
+        <input type="submit" value="Register">
+      </div>
+    </div>
+  </form>
+</section>
