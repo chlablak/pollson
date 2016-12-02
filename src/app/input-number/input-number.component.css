@@ -1,0 +1,9 @@
+input {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    text-align: center;
+    font-size: 200%;
+    font-family: bold;
+    display: block;
+}

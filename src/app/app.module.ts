@@ -11,6 +11,9 @@ import { UserComponent } from './user/user.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 
 import { AuthService } from './auth.service';
+import { JoinRoomService } from './join-room.service';
+import { CreateRoomService } from './create-room.service';
+import { InputNumberComponent } from './input-number/input-number.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { AuthService } from './auth.service';
     JoinComponent,
     CreateComponent,
     UserComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    InputNumberComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { AuthService } from './auth.service';
     HttpModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    JoinRoomService,
+    CreateRoomService
   ],
   bootstrap: [AppComponent]
 })
