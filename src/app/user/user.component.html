@@ -1,4 +1,9 @@
+<!-- If the user is not logged -->
+<app-user-login *ngIf="!authService.authentificated()"></app-user-login>
+
 <!-- Here the template for logged user -->
-<header>
-  <h2>Hello <em>{{authService.user.name}}</em> !</h2>
-</header>
+<div *ngIf="authService.authentificated()">
+  <header>
+    <h2>Hello <em>{{authService.user.name}}</em> !</h2>
+  </header>
+</div>
