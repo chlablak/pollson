@@ -1,3 +1,25 @@
+<!-- This section is about the room connection and disconnection -->
 <section>
-  <app-input-number count="4" (onFullfilled)="doJoin($event)"></app-input-number>
+  <div class="row">
+    <div class="7u 12u$(mobile)">
+      <p>
+        Please enter the room number to join it: <br>
+        <small>(if you don't know the number, please ask the room's creator)</small>
+      </p>
+    </div>
+    <div class="2u 12u$(mobile)">
+      <small>room number</small>
+      <app-input-number count="4" (onFullfilled)="joinRoomService.setRoomNumber($event)"></app-input-number>
+    </div>
+    <div class="3u$ 12u$(mobile)" [hidden]="!joinRoomService.hasPassword()">
+      <small>room password</small>
+      <app-input-number count="4" (onFullfilled)="joinRoomService.setRoomPassword($event)"></app-input-number>
+    </div>
+  </div>
+</section>
+<hr>
+
+<!-- This section show the room -->
+<section>
+  <small [hidden]="joinRoomService.joined()">{{joinRoomService.status()}}</small>
 </section>

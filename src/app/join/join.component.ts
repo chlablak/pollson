@@ -17,8 +17,4 @@ export class JoinComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  doJoin(event) {
-    alert(JSON.stringify(event));
-  }
 }

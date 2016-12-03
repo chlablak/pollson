@@ -12,4 +12,9 @@ export class AuthService {
   authentificated() {
     return this.user !== null;
   }
+
+  leave() {
+    this.user = null;
+    location.reload();
+  }
 }

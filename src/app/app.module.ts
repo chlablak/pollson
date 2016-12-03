@@ -9,11 +9,11 @@ import { JoinComponent } from './join/join.component';
 import { CreateComponent } from './create/create.component';
 import { UserComponent } from './user/user.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { InputNumberComponent } from './input-number/input-number.component';
 
 import { AuthService } from './auth.service';
 import { JoinRoomService } from './join-room.service';
 import { CreateRoomService } from './create-room.service';
-import { InputNumberComponent } from './input-number/input-number.component';
 
 @NgModule({
   declarations: [

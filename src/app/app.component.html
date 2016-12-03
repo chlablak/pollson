@@ -3,7 +3,12 @@
     <a href="#about" class="icon fa-info active"><span>About</span></a>
     <a href="#join" class="icon fa-check-square"><span>Join</span></a>
     <a href="#create" class="icon fa-plus"><span>Create</span></a>
-		<a href="#user" class="icon fa-user"><span>User</span></a>
+    <a href="#user" class="icon fa-user"><span>User</span></a>
+
+    <!-- Log out for auth user -->
+    <a href="#" class="icon fa-sign-out" *ngIf="authService.authentificated()" (click)="authService.leave()">
+      <span>Log out</span>
+    </a>
 	</nav>
 
 <!-- Main -->
