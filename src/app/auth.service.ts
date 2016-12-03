@@ -15,6 +15,5 @@ export class AuthService {
 
   leave() {
     this.user = null;
-    location.reload();
   }
 }
