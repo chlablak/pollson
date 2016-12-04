@@ -162,6 +162,15 @@
 
 						};
 
+						// Workaround: resize $main when $panels[i] grows up (for angular2 components)
+							t.resize(() => {
+								if(id == activePanelId) {
+									$main.animate({
+										height: panels[id].outerHeight()
+									}, settings.resizeSpeed, 'swing');
+								}
+							});
+
 					});
 
 				// Nav + Jumplinks.
