@@ -1,5 +1,14 @@
-<header>
-  <h2>Polls</h2>
-</header>
-
-not impl. yet
+<!-- This section is about starting the creation of a poll -->
+<section *ngIf="!createRoomService.creation()">
+  <div class="row">
+    <div class="8u 12u$(mobile)">
+      <p>
+        Start creating your own poll by clicking this button: <br>
+        <small>(you need to be <a class="jumplink" href="#user">logged in</a>)</small>
+      </p>
+    </div>
+    <div class="4u$ 12u$(mobile)">
+      <button (click)="createRoomService.start()" [disabled]="!authService.authentificated()">Start new poll</button>
+    </div>
+  </div>
+</section>
