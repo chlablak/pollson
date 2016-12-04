@@ -5,7 +5,7 @@ import { User } from './user';
 @Injectable()
 export class AuthService {
 
-  public user: User = new User('test@test.com');
+  public user: User = null;
 
   constructor() { }
 
