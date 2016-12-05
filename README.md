@@ -22,7 +22,7 @@ Follow theses steps:
 To keep this README small, the documentation is in the `docs/` folder.
 
 Here some quick links:
-- todo
+- [Source structure](https://github.com/chlablak/pollson/blob/master/docs/source-structure.md)
 
 ## Credits
 
