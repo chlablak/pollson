@@ -1,3 +1,35 @@
-<p>
-  question-creation works!
-</p>
+<div class="row">
+  <!-- text -->
+  <div class="1u 12u$(mobile)">
+    <p class="question-mark"><i class="fa fa-question"></i></p>
+  </div>
+  <div class="11u$ 12u$(mobile)">
+    <input type="text" placeholder="Question" [(ngModel)]="question.text">
+  </div>
+
+  <!-- options -->
+  <div class="12u$" *ngFor="let option of question.options; let i = index">
+    <div class="row">
+      <div class="10u 12u$(mobile)">
+        <input type="text" placeholder="Option {{i+1}}" [(ngModel)]="option.text">
+      </div>
+      <div class="2u$ 12u$(mobile) right">
+        <button (click)="remove(i)" class="full"><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- actions -->
+  <div class="7u 12u$(mobile)">
+    <p>
+      Once you've done with your question, validate it! <br>
+      <small>(when validated, a question can not be modified afterwards)</small>
+    </p>
+  </div>
+  <div class="3u 12u$(mobile) right">
+    <button (click)="validate()">Validate</button>
+  </div>
+  <div class="2u$ 12u$(mobile) right">
+    <button (click)="push()" class="full"><i class="fa fa-plus"></i></button>
+  </div>
+</div>

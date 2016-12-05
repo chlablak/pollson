@@ -16,3 +16,59 @@
         opacity: 0.5;
         cursor: not-allowed;
     }
+
+/* Input (copied from main.css "Forms") */
+
+    label {
+        display: block;
+        font-weight: 400;
+        color: #363636;
+        margin: 0 0 1em 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select,
+    textarea {
+        -webkit-appearance: none;
+        border: 0;
+        background: #f4f4f4;
+        padding: 0.75em;
+        width: 100%;
+        -moz-transition: background-color .25s ease-in-out;
+        -webkit-transition: background-color .25s ease-in-out;
+        -ms-transition: background-color .25s ease-in-out;
+        transition: background-color .25s ease-in-out;
+    }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus,
+        textarea:focus {
+            background: #f8f8f8;
+        }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+        line-height: 1.35em;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #999;
+    }
+
+    :-moz-placeholder {
+        color: #999;
+    }
+
+    ::-moz-placeholder {
+        color: #999;
+    }
+
+    :-ms-input-placeholder {
+        color: #999;
+    }

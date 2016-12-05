@@ -1,0 +1,14 @@
+div.right {
+    text-align: right;
+}
+
+button.full {
+    width: 100%;
+}
+
+p.question-mark {
+    text-align: center;
+    font-size: 3em;
+    margin: auto;
+    padding: auto;
+}
