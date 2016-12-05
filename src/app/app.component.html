@@ -6,13 +6,16 @@
     <a href="#user" class="icon fa-user"><span>User</span></a>
 
     <!-- Log out for auth user -->
-    <a href="#" class="icon fa-sign-out" *ngIf="authService.authentificated()" (click)="authService.leave()">
+    <a href="#" class="icon fa-sign-out" *ngIf="authService.authentificated()" (click)="disconnect()">
       <span>Log out</span>
     </a>
 	</nav>
 
 <!-- Main -->
 	<div id="main">
+
+    <!-- Here come the toasts -->
+      <toaster-container></toaster-container>
 
     <!-- About -->
       <article id="about" class="panel">

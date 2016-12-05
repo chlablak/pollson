@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AuthService } from './auth.service';
 
@@ -10,6 +11,12 @@ import { AuthService } from './auth.service';
 export class AppComponent {
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private toasterService: ToasterService
   ) {}
+
+  disconnect() {
+      this.authService.leave();
+      this.toasterService.pop('info', 'Logout', 'Disconnection succeed !');
+  }
 }

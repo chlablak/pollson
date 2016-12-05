@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { LocalStorageService } from 'angular2-localstorage/LocalStorageEmitter';
+import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -29,9 +31,12 @@ import { CreateRoomService } from './create-room.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    ToasterModule
   ],
   providers: [
+    LocalStorageService,
+    ToasterService,
     AuthService,
     JoinRoomService,
     CreateRoomService
