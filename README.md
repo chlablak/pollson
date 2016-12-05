@@ -11,18 +11,20 @@ The repo for the back-end can be found at https://github.com/chlablak/pollson-se
 
 The sources scaffolding was done using the CLI tool for Angular2: https://github.com/angular/angular-cli
 
-Follow theses steps:
+Follow theses steps (testing):
 - install the CLI tool for Angular2 (see the link above)
 - (fork and) clone the repo on your computer
 - move to the root directory
 - run `ng serve` and go at [http://localhost:4200/](http://localhost:4200/)
+
+For others kind of building (production, githug-pages deployment, ...), take a look at the CLI's documentation (follow the link above).
 
 ## Documentation
 
 To keep this README small, the documentation is in the `docs/` folder.
 
 Here some quick links:
-- todo
+- [Source structure](https://github.com/chlablak/pollson/blob/master/docs/source-structure.md)
 
 ## Credits
 
