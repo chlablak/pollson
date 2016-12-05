@@ -16,6 +16,9 @@ import { InputNumberComponent } from './input-number/input-number.component';
 import { AuthService } from './auth.service';
 import { JoinRoomService } from './join-room.service';
 import { CreateRoomService } from './create-room.service';
+import { QuestionCreationComponent } from './question-creation/question-creation.component';
+import { QuestionResultComponent } from './question-result/question-result.component';
+import { QuestionFormComponent } from './question-form/question-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { CreateRoomService } from './create-room.service';
     CreateComponent,
     UserComponent,
     UserLoginComponent,
-    InputNumberComponent
+    InputNumberComponent,
+    QuestionCreationComponent,
+    QuestionResultComponent,
+    QuestionFormComponent
   ],
   imports: [
     BrowserModule,
