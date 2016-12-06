@@ -17,6 +17,13 @@
         padding: auto;
     }
 
+    p.option-mark {
+        text-align: center;
+        font-size: 2em;
+        margin: auto;
+        padding: auto;
+    }
+
 /* Buttons */
 
     button {
@@ -31,6 +38,23 @@
     
     button.full {
         width: 100%;
+    }
+
+/* Progress bars */
+    .progress-container {
+        height: 1.5em;
+        position: relative;
+        width: 100%;
+        font-size: 24px !important;
+        background-color: #f8f8f8;
+    }
+
+    .progressbar {
+        background-color: #e5e5e5;
+        height: 100%;
+        line-height: inherit;
+        position: absolute;
+        padding-left: 5px;
     }
 
 /* Input (copied from main.css "Forms") */

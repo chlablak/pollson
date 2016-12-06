@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { CreateRoomService } from '../create-room.service';
 
 import { Question } from '../question';
+import { Option } from '../option';
 
 @Component({
   selector: 'app-create',
@@ -13,7 +14,7 @@ import { Question } from '../question';
 export class CreateComponent implements OnInit {
 
   // TEST
-  question: Question = new Question();
+  question: Question = new Question('Comment ça va?', false, [new Option('Bien', 15), new Option('Bof', 5)]);
 
   constructor(
     public authService: AuthService,
@@ -31,11 +32,12 @@ export class CreateComponent implements OnInit {
   // TEST
   choice(event) {
     console.log('choice(' + JSON.stringify(event) + ')');
+    this.question.options[event.index].count++;
   }
 
   // TEST
   diag() {
-      return JSON.stringify(this.question);
+    return JSON.stringify(this.question);
   }
 
 }

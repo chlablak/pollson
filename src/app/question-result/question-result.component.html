@@ -1,3 +1,33 @@
-<p>
-  question-result works!
-</p>
+<div class="row">
+  <!-- text -->
+  <div class="1u 12u$(mobile)">
+    <p class="question-mark"><i class="fa fa-question"></i></p>
+  </div>
+  <div class="11u$ 12u$(mobile)">
+    {{question.text}}
+  </div>
+
+  <!-- options -->
+  <div class="12u$" *ngFor="let option of question.options; let i = index">
+    <div class="row">
+      <div class="1u 12u$(mobile)">
+        <p class="option-mark"><i class="fa fa-angle-right"></i></p>
+      </div>
+      <div class="7u 12u$(mobile)">
+        {{option.text}}
+      </div>
+      <div class="4u$ 12u$(mobile)">
+        <div class="progress-container">
+          <div class="progressbar" [style.width]="percentage(i)">
+            <div><strong>{{percentage(i)}}</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- total -->
+  <div class="12u$ right">
+    <p>{{total()}} vote{{total()>0?'s':''}}</p>
+  </div>
+</div>
