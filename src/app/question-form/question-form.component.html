@@ -8,7 +8,19 @@
   </div>
 
   <!-- options -->
-  <div class="12u$" *ngFor="let option of question.options; let i = index">
-    <button (click)="choice(i)" class="full">{{option.text}}</button>
+  <div *ngIf="question.options.length%2==1"
+    class="12u$">
+    <div class="12u$" *ngFor="let option of question.options; let i = index">
+      <button (click)="choice(i)" class="full">{{option.text}}</button>
+    </div>
+  </div>
+  <div *ngIf="question.options.length%2==0"
+    class="12u$">
+    <div class="row">
+      <div *ngFor="let option of question.options; let i = index"
+        class="6u{{i%2==1?'$':''}} 12u$(mobile)">
+        <button (click)="choice(i)" class="full">{{option.text}}</button>
+      </div>
+    </div>
   </div>
 </div>
