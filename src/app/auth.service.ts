@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig, JwtHelper } from 'angular2-jwt';
-import { LocalStorage } from 'angular2-localstorage/WebStorage';
+import { CoolLocalStorage } from 'angular2-cool-storage';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -12,24 +12,28 @@ import { environment } from '../environments/environment';
 export class AuthService {
 
   // current user
-  @LocalStorage()
   public user: User = null;
 
   // current token
-  @LocalStorage()
   public token: string = null;
 
   // AuthHttp wrapper
   private authHttp: AuthHttp = null;
 
   constructor(
-    private baseHttp: Http
+    private baseHttp: Http,
+    private localStorage: CoolLocalStorage
   ) {
+
+    // get data from storage
+    this.user = this.localStorage.getObject('user');
+    this.token = this.localStorage.getItem('token');
 
     // configure the wrapper
     this.authHttp = new AuthHttp(new AuthConfig({
       tokenGetter: (() => this.token),
-      globalHeaders: [{ 'Content-Type': 'application/json' }]
+      globalHeaders: [{ 'Content-Type': 'application/json' }],
+      noTokenScheme: true
     }), baseHttp);
   }
 
@@ -41,6 +45,9 @@ export class AuthService {
   // log out
   leave() {
     this.user = null;
+    this.token = null;
+    this.localStorage.removeItem('token');
+    this.localStorage.removeItem('user');
   }
 
   // create a new user
@@ -76,6 +83,8 @@ export class AuthService {
         // save current user and his token
         this.token = data.token;
         this.user = user;
+        this.localStorage.setItem('token', this.token);
+        this.localStorage.setObject('user', this.user);
       });
   }
 

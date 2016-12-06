@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { LocalStorageService } from 'angular2-localstorage/LocalStorageEmitter';
+import { CoolStorageModule } from 'angular2-cool-storage';
 import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AppComponent } from './app.component';
@@ -38,10 +38,10 @@ import { QuestionFormComponent } from './question-form/question-form.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    ToasterModule
+    ToasterModule,
+    CoolStorageModule
   ],
   providers: [
-    LocalStorageService,
     ToasterService,
     AuthService,
     JoinRoomService,
