@@ -7,19 +7,35 @@
     {{question.text}}
   </div>
 
-  <!-- options -->
+  <!-- options (not even => stacked alone) -->
   <div *ngIf="question.options.length%2==1"
     class="12u$">
     <div class="12u$" *ngFor="let option of question.options; let i = index">
-      <button (click)="choice(i)" class="full">{{option.text}}</button>
+      <div class="row">
+        <div class="1u 12u$(mobile)">
+          <p class="option-mark"><i class="fa fa-angle-right"></i></p>
+        </div>
+        <div class="11u$ 12u$(mobile)">
+          <button (click)="choice(i)" class="full">{{option.text}}</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- options (even => stacked by pair) -->
   <div *ngIf="question.options.length%2==0"
     class="12u$">
     <div class="row">
       <div *ngFor="let option of question.options; let i = index"
         class="6u{{i%2==1?'$':''}} 12u$(mobile)">
-        <button (click)="choice(i)" class="full">{{option.text}}</button>
+        <div class="row">
+          <div class="1u 12u$(mobile)">
+            <p class="option-mark"><i class="fa fa-angle-right"></i></p>
+          </div>
+          <div class="11u$ 12u$(mobile)">
+            <button (click)="choice(i)" class="full">{{option.text}}</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
