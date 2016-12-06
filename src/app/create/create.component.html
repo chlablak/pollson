@@ -14,13 +14,27 @@
 </section>
 
 <!-- This section is for TEST -->
+<hr>
+<header>
+  <h2>Question components - Testing area</h2>
+</header>
 <section>
-  <hr>
-  <p>{{diag()}}</p>
-  <hr>
-  <app-question-result [question]="question"></app-question-result>
-  <hr>
-  <app-question-form [question]="question" (onChoice)="choice($event)"></app-question-form>
-  <hr>
-  <app-question-creation [question]="question" (onValidate)="validate($event)"></app-question-creation>
+  <header>
+    <h3>Creation</h3>
+  </header>
+  <section>
+    <app-question-creation [question]="question" (onValidate)="validate($event)"></app-question-creation>
+  </section>
+  <header>
+    <h3>Form</h3>
+  </header>
+  <section>
+    <app-question-form [question]="question" (onChoice)="choice($event)"></app-question-form>
+  </section>
+  <header>
+    <h3>Result</h3>
+  </header>
+  <section>
+    <app-question-result [question]="question"></app-question-result>
+  </section>
 </section>

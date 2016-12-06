@@ -18,6 +18,7 @@ export class QuestionResultComponent implements OnInit {
   ngOnInit() {
   }
 
+  // total number of vote
   total() {
     let total = 0;
     for(let option of this.question.options)
@@ -25,6 +26,7 @@ export class QuestionResultComponent implements OnInit {
     return total;
   }
 
+  // percentage for a specific option
   percentage(index) {
     let total = this.total();
     let percentage = total > 0 ? this.question.options[index].count / total : 0;
