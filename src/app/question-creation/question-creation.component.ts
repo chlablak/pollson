@@ -18,7 +18,7 @@ export class QuestionCreationComponent implements OnInit {
 
   // actions events 
   @Output()
-  actions: any = new EventEmitter();
+  onValidate: any = new EventEmitter();
 
   // maxmium of options possible
   MAX_OPTIONS: number = 10;
@@ -34,7 +34,7 @@ export class QuestionCreationComponent implements OnInit {
   push() {
       console.log(JSON.stringify(this.question));
     if(this.question.options.length < this.MAX_OPTIONS)
-      this.question.options.push(new Option(''));
+      this.question.options.push(new Option());
     else
       this.toasterService.pop('info', 'Question', 'Maximum number of options reached.')
   }
@@ -69,7 +69,7 @@ export class QuestionCreationComponent implements OnInit {
     }
 
     // all ok, emit to the parent
-    this.actions.emit({ 'type': 'validated' });
+    this.onValidate.emit();
   }
 
 }

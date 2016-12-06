@@ -1,6 +1,6 @@
 export class Option {
 
   constructor(
-    public text: string
+    public text: string = ''
   ) {}
 }

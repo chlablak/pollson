@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { Question } from '../question';
 
 @Component({
   selector: 'app-question-form',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionFormComponent implements OnInit {
 
+  // question model
+  @Input()
+  question: Question;
+
+  // choice event
+  @Output()
+  onChoice: any = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  // emit the choice
+  choice(index) {
+    this.onChoice.emit({ 'index': index });
   }
 
 }

@@ -1,3 +1,14 @@
-<p>
-  question-form works!
-</p>
+<div class="row">
+  <!-- text -->
+  <div class="1u 12u$(mobile)">
+    <p class="question-mark"><i class="fa fa-question"></i></p>
+  </div>
+  <div class="11u$ 12u$(mobile)">
+    <p>{{question.text}}</p>
+  </div>
+
+  <!-- options -->
+  <div class="12u$" *ngFor="let option of question.options; let i = index">
+    <button (click)="choice(i)" class="full">{{option.text}}</button>
+  </div>
+</div>

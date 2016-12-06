@@ -6,6 +6,17 @@
         font-size: 80%;
     }
 
+    div.right {
+        text-align: right;
+    }
+
+    p.question-mark {
+        text-align: center;
+        font-size: 3em;
+        margin: auto;
+        padding: auto;
+    }
+
 /* Buttons */
 
     button {
@@ -15,6 +26,11 @@
     button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+    }
+
+    
+    button.full {
+        width: 100%;
     }
 
 /* Input (copied from main.css "Forms") */

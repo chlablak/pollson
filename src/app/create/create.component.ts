@@ -24,8 +24,13 @@ export class CreateComponent implements OnInit {
   }
 
   // TEST
-  actionsHandler(event) {
-    console.log('actionsHandler(' + JSON.stringify(event) + ')');
+  validate(event) {
+    console.log('validate(' + JSON.stringify(event) + ')');
+  }
+
+  // TEST
+  choice(event) {
+    console.log('choice(' + JSON.stringify(event) + ')');
   }
 
   // TEST

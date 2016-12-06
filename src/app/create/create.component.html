@@ -18,5 +18,7 @@
   <hr>
   <p>{{diag()}}</p>
   <hr>
-  <app-question-creation [question]="question" (actions)="actionsHandler($event)"></app-question-creation>
+  <app-question-creation [question]="question" (onValidate)="validate($event)"></app-question-creation>
+  <hr>
+  <app-question-form [question]="question" (onChoice)="choice($event)"></app-question-form>
 </section>
