@@ -9,3 +9,5 @@ These document references the differents components, services and classes used i
 ## Components
 
 ### Components hierachy
+
+## Resources
