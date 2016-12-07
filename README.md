@@ -19,6 +19,8 @@ Follow theses steps (testing):
 
 For others kind of building (production, githug-pages deployment, ...), take a look at the CLI's documentation (follow the link above).
 
+For a fully functional local front-end, you have to [run the back-end](https://github.com/chlablak/pollson-server) first.
+
 ## Documentation
 
 To keep this README small, the documentation was moved in the `docs/` folder.
