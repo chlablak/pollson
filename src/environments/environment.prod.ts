@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  restApiUrl: ''
+  restApiUrl: 'http://pollson.herokuapp.com/'
 };
