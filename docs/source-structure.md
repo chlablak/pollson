@@ -27,6 +27,7 @@ The files can be found in `src/app/`, terminated by `.service.ts`.
 
 | Name | Description |
 | ---- | ----------- |
+| `App` | ... |
 | `About` | ... |
 | `Create` | ... |
 | `InputNumber` | ... |
@@ -43,16 +44,17 @@ The files can be found in `src/app/<component>/`.
 
 Here the components hierachy:
 
-- `About`
-- `Create`
-  - `QuestionCreation`
-  - `QuestionResult`
-- `Join`
-  - `InputNumber`
-  - `QuestionForm`
-  - `QuestionResult`
-- `User`
-  - `UserLogin`
+- `App`
+  - `About`
+  - `Create`
+    - `QuestionCreation`
+    - `QuestionResult`
+  - `Join`
+    - `InputNumber`
+    - `QuestionForm`
+    - `QuestionResult`
+  - `User`
+    - `UserLogin`
 
 ## Resources
 
