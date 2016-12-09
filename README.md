@@ -13,7 +13,7 @@ The repo for the back-end can be found at https://github.com/chlablak/pollson-se
 
 Here you can see the Angular2 components for manipuling questions. For a real-time preview, go on the online version (link above). Under the *Create* panel, we put these components for testing.
 
-![Preview](https://github.com/chlablak/pollson/blob/master/src/assets/img/questions-components-preview.png)
+![Preview](https://github.com/chlablak/pollson/blob/master/src/assets/img/question-component-creation-preview.png) 
 
 ## Building
 
