@@ -1,4 +1,6 @@
-# Pollson
+# Pollson 
+**/pɔʊlzɒn/**
+
 *Simple, interactive, fast polls managment.*
 
 This repo contains the front-end web site for the pollson project.
@@ -6,6 +8,12 @@ This repo contains the front-end web site for the pollson project.
 You can find the online version here: https://chlablak.github.io/pollson/
 
 The repo for the back-end can be found at https://github.com/chlablak/pollson-server.
+
+### Preview
+
+Here you can see the Angular2 components for manipuling questions. For a real-time preview, go on the online version (link above). Under the *Create* panel, we put these components for testing.
+
+![Preview](https://github.com/chlablak/pollson/blob/master/src/assets/img/questions-components-preview.png)
 
 ## Building
 
@@ -32,4 +40,6 @@ Here some quick links:
 
 The project was done in the context of the TWEB course at HEIG-VD.
 
-Thanks for reading, P. Champion and C. Browne.
+Thanks for reading, 
+
+[chlablak](https://github.com/chlablak) & [moodah](https://github.com/moodah)
