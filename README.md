@@ -1,7 +1,7 @@
 # Pollson 
 **/pɔʊlzɒn/**
 
-*Simple, interactive, fast polls managment.*
+*Simple, interactive, fast polls management.*
 
 This repo contains the front-end web site for the pollson project.
 
