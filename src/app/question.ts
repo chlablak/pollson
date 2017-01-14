@@ -2,9 +2,9 @@ import { Option } from './option';
 
 export class Question {
 
-  constructor(
-    public text: string = '',
-    public open: boolean = false,
-    public options: Option[] = []
-  ) {}
+  public text?: string;
+  public options?: Option[];
+  public answer?: number;
+  public answered?: string[];
+  public open?: boolean;
 }

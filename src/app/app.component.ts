@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AuthService } from './auth.service';
+import { RoomProxyService } from './room-proxy.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
 
   constructor(
     public authService: AuthService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    public roomProxyService: RoomProxyService
   ) {}
 
   disconnect() {

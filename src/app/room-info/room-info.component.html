@@ -1,0 +1,18 @@
+<div>
+  <h3>{{room.name}}</h3>
+  <small>by {{room.creator}}</small>
+  
+  <!-- General questions infos -->
+  <h5>Questions</h5>
+  <ul>
+    <li>Opened: {{opened()}} / {{total()}}</li>
+    <li>Closed: {{closed()}} / {{total()}}</li>
+    <li>Avg. vote: {{avgVote()}}</li>
+  </ul>
+
+  <!-- User questions infos -->
+  <h5>You</h5>
+  <ul>
+    <li>Not answered: {{notAnswered()}} / {{opened()}}</li>
+  </ul>
+</div>

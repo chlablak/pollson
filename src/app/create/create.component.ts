@@ -13,7 +13,7 @@ import { Question } from '../question';
 export class CreateComponent implements OnInit {
 
   // TEST
-  question: Question = new Question();
+  question: Question = { text: '', options: [{ text: '', count: 0 }, { text: '', count: 0 }]};
 
   constructor(
     public authService: AuthService,

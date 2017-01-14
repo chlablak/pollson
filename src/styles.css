@@ -112,3 +112,16 @@
     :-ms-input-placeholder {
         color: #999;
     }
+
+/* Room info */
+div.room-info {
+    background-color: white;
+    border-color: black;
+    border-bottom-style: solid;
+    border-width: 1px;
+    position: fixed;
+    top: 4.25em;
+    left: 1vw;
+    width: 18vw;
+    padding: 1vw;
+}

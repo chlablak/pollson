@@ -38,3 +38,8 @@
 			</article>
 
 	</div>
+
+<!-- Rooms infos -->
+  <div class="room-info" *ngIf="roomProxyService.connected()">
+    <app-room-info [room]="roomProxyService.room"></app-room-info>
+  </div>
