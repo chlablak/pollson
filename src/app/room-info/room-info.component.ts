@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { AuthService } from '../auth.service';
+
 import { Room } from '../room';
 
 @Component({
@@ -12,29 +14,41 @@ export class RoomInfoComponent implements OnInit {
   @Input()
   public room: Room;
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
 
   total() {
-    return 'todo';
+    return this.room.questions.length;
   }
 
   opened() {
-    return 'todo';
+    return this.room.questions.filter((q) => {
+      return q.open;
+    }).length;
   }
 
   closed() {
-    return 'todo';
+    return this.total() - this.opened();
   }
 
   avgVote() {
-    return 'todo';
+    let count = 0;
+    this.room.questions.forEach((q) => {
+      count += q.answered.length;
+    });
+    return (count / this.total()).toPrecision(2);
   }
 
   notAnswered() {
-    return 'todo';
+    return this.room.questions.filter((q) => {
+      return q.open;
+    }).filter((q) => {
+      return !q.answered.some((n) => {
+        return n == this.authService.user.email;
+      });
+    }).length;
   }
 
 }

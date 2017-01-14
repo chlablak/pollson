@@ -11,8 +11,10 @@
   </ul>
 
   <!-- User questions infos -->
-  <h5>You</h5>
-  <ul>
-    <li>Not answered: {{notAnswered()}} / {{opened()}}</li>
-  </ul>
+  <div *ngIf="authService.authentificated()">
+    <h5>You</h5>
+    <ul>
+      <li>Not answered: {{notAnswered()}} / {{opened()}}</li>
+    </ul>
+  </div>
 </div>
