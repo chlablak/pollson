@@ -6,8 +6,6 @@ import { CoolStorageModule } from 'angular2-cool-storage';
 import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AuthService } from './auth.service';
-import { JoinRoomService } from './join-room.service';
-import { CreateRoomService } from './create-room.service';
 import { RoomProxyService } from './room-proxy.service';
 
 import { AppComponent } from './app.component';
@@ -47,8 +45,6 @@ import { RoomInfoComponent } from './room-info/room-info.component';
   providers: [
     ToasterService,
     AuthService,
-    JoinRoomService,
-    CreateRoomService,
     RoomProxyService
   ],
   bootstrap: [AppComponent]

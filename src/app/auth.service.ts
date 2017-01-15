@@ -83,6 +83,7 @@ export class AuthService {
         // save current user and his token
         this.token = data.token;
         this.user = user;
+        this.user.id = data.id;
         this.localStorage.setItem('token', this.token);
         this.localStorage.setObject('user', this.user);
       });

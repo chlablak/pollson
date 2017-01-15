@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../auth.service';
-import { JoinRoomService } from '../join-room.service';
+import { RoomProxyService } from '../room-proxy.service';
 
 @Component({
   selector: 'app-join',
@@ -12,9 +12,29 @@ export class JoinComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public joinRoomService: JoinRoomService
+    public roomProxyService: RoomProxyService
   ) {}
 
   ngOnInit() {
+  }
+
+  setRoomPassword(event) {
+
+  }
+
+  setRoomNumber(event) {
+
+  }
+
+  hasPassword() {
+    return false;
+  }
+
+  joined() {
+    return false;
+  }
+
+  status() {
+    
   }
 }

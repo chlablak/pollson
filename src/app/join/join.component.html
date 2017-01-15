@@ -9,11 +9,11 @@
     </div>
     <div class="2u 12u$(mobile)">
       <small>room number</small>
-      <app-input-number count="4" (onFullfilled)="joinRoomService.setRoomNumber($event)"></app-input-number>
+      <app-input-number count="4" (onFullfilled)="setRoomNumber($event)"></app-input-number>
     </div>
-    <div class="3u$ 12u$(mobile)" [hidden]="!joinRoomService.hasPassword()">
+    <div class="3u$ 12u$(mobile)" [hidden]="!hasPassword()">
       <small>room password</small>
-      <app-input-number count="4" (onFullfilled)="joinRoomService.setRoomPassword($event)"></app-input-number>
+      <app-input-number count="4" (onFullfilled)="setRoomPassword($event)"></app-input-number>
     </div>
   </div>
 </section>
@@ -21,5 +21,5 @@
 
 <!-- This section show the room -->
 <section>
-  <small [hidden]="joinRoomService.joined()">{{joinRoomService.status()}}</small>
+  <small [hidden]="joined()">{{status()}}</small>
 </section>

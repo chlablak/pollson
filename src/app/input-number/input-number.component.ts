@@ -10,6 +10,9 @@ export class InputNumberComponent implements OnInit {
   @Input()
   count: number;
 
+  @Input()
+  disabled: boolean = false;
+
   @Output()
   onFullfilled: any = new EventEmitter();
 

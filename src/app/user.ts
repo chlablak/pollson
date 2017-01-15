@@ -1,6 +1,7 @@
 export class User {
 
     public name: string;
+    public id: string = null;
 
     constructor(
         public email: string,

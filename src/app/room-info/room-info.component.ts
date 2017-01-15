@@ -46,7 +46,7 @@ export class RoomInfoComponent implements OnInit {
       return q.open;
     }).filter((q) => {
       return !q.answered.some((n) => {
-        return n == this.authService.user.email;
+        return n == this.authService.user.id;
       });
     }).length;
   }

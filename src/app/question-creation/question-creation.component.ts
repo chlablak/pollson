@@ -32,9 +32,8 @@ export class QuestionCreationComponent implements OnInit {
 
   // add a new empty option
   push() {
-      console.log(JSON.stringify(this.question));
     if(this.question.options.length < this.MAX_OPTIONS)
-      this.question.options.push(new Option());
+      this.question.options.push({ text: '' });
     else
       this.toasterService.pop('info', 'Question', 'Maximum number of options reached.')
   }
