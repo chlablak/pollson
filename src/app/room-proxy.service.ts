@@ -48,11 +48,14 @@ export class RoomProxyService {
 
   // connect to a room
   connect() {
-    this.socket = io(environment.restApiUrl);
+    this.socket = io(environment.restApiUrl, {
+      transports: ['websocket']
+    });
     wildcard(io.Manager)(this.socket);
 
     // TEST
     this.socket.emit('answer::create', { 'text': 'hello' });
+    console.log('io sent');
     this.socket.on('*', (data) => {
       console.log('io recv: ' + JSON.stringify(data));
     });

@@ -18,8 +18,7 @@ The files can be found in `src/app/`.
 | Name | Description |
 | ---- | ----------- |
 | `Auth` | ... |
-| `CreateRoom` | ... |
-| `JoinRoom` | ... |
+| `RoomProxy` | ... |
 
 The files can be found in `src/app/`, terminated by `.service.ts`.
 
@@ -35,6 +34,7 @@ The files can be found in `src/app/`, terminated by `.service.ts`.
 | `QuestionCreation` | ... |
 | `QuestionForm` | ... |
 | `QuestionResult` | ... |
+| `RoomInfo` | ... |
 | `User` | ... |
 | `UserLogin` | ... |
 
@@ -55,6 +55,7 @@ Here the components hierachy:
     - `QuestionResult`
   - `User`
     - `UserLogin`
+  - `RoomInfo`
 
 ## Resources
 
@@ -63,3 +64,5 @@ Here the components hierachy:
 - https://github.com/auth0/angular2-jwt
 - https://github.com/Hacklone/angular2-cool-storage
 - https://github.com/Stabzs/Angular2-Toaster
+- https://github.com/socketio/socket.io-client
+- https://github.com/hden/socketio-wildcard
