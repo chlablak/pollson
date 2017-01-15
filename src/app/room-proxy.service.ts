@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import * as io from 'socket.io-client';
+import * as wildcard from 'socketio-wildcard';
 
 import { AuthService } from './auth.service';
 import { environment } from '../environments/environment';
@@ -8,9 +10,11 @@ import { Room } from './room';
 export class RoomProxyService {
 
   public room: Room;
+  public socket: any;
 
   constructor(public authService: AuthService) { 
     this.room = null;
+    this.socket = null;
   }
 
   // tell if the proxy is connected to a room
@@ -26,6 +30,7 @@ export class RoomProxyService {
       .toPromise()
       .then((data) => {
         this.room = data;
+        this.connect();
       });
   }
 
@@ -36,9 +41,21 @@ export class RoomProxyService {
       && this.room.creator.id == this.authService.user.id;
   }
 
-  // connect to a room
-  connect(number, password?) {
+  // join a room
+  join(number, password?) {
 
+  }
+
+  // connect to a room
+  connect() {
+    this.socket = io(environment.restApiUrl);
+    wildcard(io.Manager)(this.socket);
+
+    // TEST
+    this.socket.emit('answer::create', { 'text': 'hello' });
+    this.socket.on('*', (data) => {
+      console.log('io recv: ' + JSON.stringify(data));
+    });
   }
 
   // disconnect from the current room

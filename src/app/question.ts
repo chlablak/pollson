@@ -7,4 +7,5 @@ export class Question {
   public answer?: number;
   public answered?: string[];
   public open?: boolean;
+  public _id?: string;
 }
