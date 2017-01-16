@@ -56,7 +56,9 @@ export class RoomProxyService {
     else {
       return this.authService.logAsGuest(number, password)
         .then(() => {
-          this.fetch().then();
+          this.fetch().then(() => {
+            this.connect();
+          });
         });
     }
   }
