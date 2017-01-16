@@ -4,7 +4,7 @@ export class Room {
 
   public name?: string;
   public creator?: {
-    id?: string;
+    _id?: string;
     email?: string;
   }
   public id?: number;

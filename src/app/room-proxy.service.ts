@@ -50,7 +50,7 @@ export class RoomProxyService {
   creation() {
     return this.connected() 
       && this.authService.authentificated() 
-      && this.room.creator.id == this.authService.user._id;
+      && this.room.creator._id == this.authService.user._id;
   }
 
   // join a room
@@ -97,9 +97,14 @@ export class RoomProxyService {
     // TEST
     this.socket.on('*', (data) => {
       console.log('io recv: ' + JSON.stringify(data));
+      if(data.data[0] == 'rooms patched') {
+        console.log('PATCH...');
+        this.setRoom(data.data[1]);
+        console.log('DONE!');
+      }
     });
 
-    // TODO
+    // TODO ?
   }
 
   // disconnect from the current room
