@@ -31,8 +31,9 @@ export class InputNumberComponent implements OnInit {
       this.limit *= 10;
 
     // placeholder to do it pretty
-    let max = this.limit * 10 - this.limit;
-    this.placeholder = '' + Math.floor(Math.random() * max + this.limit);
+    this.placeholder = '';
+    for(let i = 0; i < this.count; i++)
+      this.placeholder = this.placeholder + '?';
   }
 
   // input changed

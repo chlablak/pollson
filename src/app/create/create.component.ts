@@ -128,4 +128,14 @@ export class CreateComponent implements OnInit {
       alert('An error occured');
     });
   }
+
+  // generate quick join link
+  joinLink() {
+    let link = window.location.toString().split('#', 1)[0];
+    link = link + '?room=' + this.roomProxyService.room.id;
+    if(this.hasPassword())
+      link = link + '&password=' + this.roomProxyService.room.password;
+    link = link + '#join';
+    return link;
+  }
 }

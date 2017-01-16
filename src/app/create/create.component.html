@@ -41,7 +41,12 @@
 
       <!-- Infos -->
       <div class="12u$">
-        <p>Give the room number ({{roomProxyService.room.id}})<span *ngIf="hasPassword()"> and the room password ({{roomProxyService.room.password}})</span> to your audience to allow them to join it!</p>
+        <p>Give the room number <span class="highlight">{{roomProxyService.room.id}}</span> to your audience to allow them to join it!</p>
+        <p *ngIf="hasPassword()">And don't forget the room password: <span class="highlight">{{roomProxyService.room.password}}</span></p>
+        <p>
+          Or you can give them this quick link:<br>
+          <input type="text" value="{{joinLink()}}" readonly="true">
+        </p>
       </div>
     </div>
   </section>
