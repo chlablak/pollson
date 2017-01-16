@@ -78,7 +78,13 @@ export class CreateComponent implements OnInit {
 
   // close the room
   close() {
-    // TODO
+    this.roomProxyService.update({
+      open: false
+    }).then(() => {
+      this.roomProxyService.disconnect();
+    }).catch(() => {
+      alert('An error occured');
+    })
   }
 
   // add a new question (creation)

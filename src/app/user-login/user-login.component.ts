@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
@@ -15,6 +15,9 @@ export class UserLoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   public registerForm: FormGroup;
+
+  @Output()
+  onSuccessLogin: any = new EventEmitter();
 
   constructor(
     public authService: AuthService,
@@ -52,6 +55,7 @@ export class UserLoginComponent implements OnInit {
     // ask for login
     this.authService.authentificate(user).then(() => {
       this.toasterService.pop('success', 'Log in', 'You are logged in !');
+      this.onSuccessLogin.emit();
     }).catch((err) => {
       console.log(JSON.stringify(err));
       this.toasterService.pop('error', 'Log in', 'An error occured, please try again.');

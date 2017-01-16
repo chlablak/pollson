@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import * as wildcard from 'socketio-wildcard';
+import { CoolLocalStorage } from 'angular2-cool-storage';
 
 import { AuthService } from './auth.service';
 import { environment } from '../environments/environment';
@@ -13,14 +14,22 @@ export class RoomProxyService {
   public room: Room;
   public socket: any;
 
-  constructor(public authService: AuthService) { 
+  constructor(
+    public authService: AuthService,
+    public localStorage: CoolLocalStorage
+  ) { 
     this.room = null;
     this.socket = null;
+
+    // get room from storage if any
+    this.room = this.localStorage.getObject('room');
+    if(this.room != null)
+      this.connect();
   }
 
   // tell if the proxy is connected to a room
   connected() {
-    return this.room != null;
+    return this.room != null && this.socket != null;
   }
 
   // create a new room
@@ -30,7 +39,7 @@ export class RoomProxyService {
       .map((res) => res.json())
       .toPromise()
       .then((data) => {
-        this.room = data;
+        this.setRoom(data);
         this.connect();
       }).catch((err) => {
         console.log('[RoomProxyService] create room error: ' + JSON.stringify(err));
@@ -70,7 +79,7 @@ export class RoomProxyService {
       .map((res) => res.json())
       .toPromise()
       .then((data) => {
-        this.room = data;
+        this.setRoom(data);
       })
       .catch((err) => {
         console.log('[RoomProxyService] fetching error: ' + JSON.stringify(err));
@@ -95,7 +104,10 @@ export class RoomProxyService {
 
   // disconnect from the current room
   disconnect() {
-    // TODO
+    this.room = null;
+    this.socket.disconnect();
+    this.socket = null;
+    this.localStorage.removeItem('room');
   }
 
   // do a patch on the room
@@ -105,7 +117,7 @@ export class RoomProxyService {
       .map((res) => res.json())
       .toPromise()
       .then((data) => {
-        this.room = data;
+        this.setRoom(data);
       }).catch((err) => {
         console.log('[RoomProxyService] update room with patch `' + JSON.stringify(patch) + '` returns an error: ' + JSON.stringify(err));
       });
@@ -121,10 +133,15 @@ export class RoomProxyService {
       .toPromise()
       .then(() => {
         option.answered.push(this.authService.user._id);
+        this.setRoom(this.room);
       })
       .catch((err) => {
         console.log('[RoomProxyService] answering error: ' + JSON.stringify(err));
       });
   }
 
+  setRoom(room: Room) {
+    this.room = room;
+    this.localStorage.setObject('room', room);
+  }
 }

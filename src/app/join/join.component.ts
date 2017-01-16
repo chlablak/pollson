@@ -64,7 +64,7 @@ export class JoinComponent implements OnInit {
   }
 
   leave() {
-    // TODO
+    this.roomProxyService.disconnect();
   }
 
   // filter questions to show

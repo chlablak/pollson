@@ -1,5 +1,5 @@
 <!-- If the user is not logged -->
-<app-user-login *ngIf="!authService.authentificated()"></app-user-login>
+<app-user-login *ngIf="!authService.authentificated()" (onSuccessLogin)="fetch()"></app-user-login>
 
 <!-- Here the template for logged user -->
 <div *ngIf="authService.authentificated()">
