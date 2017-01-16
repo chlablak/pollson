@@ -24,6 +24,10 @@
         padding: auto;
     }
 
+    .highlight {
+        background-color: #f8f8f8;
+    }
+
 /* Buttons */
 
     button {

@@ -33,7 +33,7 @@ export class QuestionCreationComponent implements OnInit {
   // add a new empty option
   push() {
     if(this.question.options.length < this.MAX_OPTIONS)
-      this.question.options.push({ text: '' });
+      this.question.options.push({ text: '', answer: false, answered: [] });
     else
       this.toasterService.pop('info', 'Question', 'Maximum number of options reached.')
   }
@@ -41,6 +41,16 @@ export class QuestionCreationComponent implements OnInit {
   // remove the option 
   remove(index) {
     this.question.options.splice(index, 1);
+  }
+
+  // set answer
+  setAnswer(option) {
+    if(option.answer) {
+      this.question.options.forEach((o) => {
+        o.answer = false;
+      });
+      option.answer = true;
+    }
   }
 
   // validate the question

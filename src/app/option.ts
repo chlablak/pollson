@@ -1,6 +1,7 @@
 export class Option {
 
   public text?: string;
-  public count?: number;
+  public answered?: string[];
+  public answer?: boolean;
   public _id?: string;
 }

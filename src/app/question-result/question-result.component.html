@@ -11,10 +11,13 @@
   <div class="12u$" *ngFor="let option of question.options; let i = index">
     <div class="row">
       <div class="1u 12u$(mobile)">
-        <p class="option-mark"><i class="fa fa-angle-right"></i></p>
+        <p class="option-mark" *ngIf="noAnswer()"><i class="fa fa-angle-right"></i></p>
+        <p class="option-mark" *ngIf="!noAnswer()&&option.answer"><i class="fa fa-check"></i></p>
+        <p class="option-mark" *ngIf="!noAnswer()&&!option.answer"><i class="fa fa-times"></i></p>
       </div>
       <div class="7u 12u$(mobile)">
-        {{option.text}}
+        <span *ngIf="hasAnswered(option)" class="highlight">{{option.text}}</span>
+        <span *ngIf="!hasAnswered(option)">{{option.text}}</span>
       </div>
       <div class="4u$ 12u$(mobile)">
         <div class="progress-container">

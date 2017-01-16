@@ -36,7 +36,9 @@ export class RoomInfoComponent implements OnInit {
   avgVote() {
     let count = 0;
     this.room.questions.forEach((q) => {
-      count += q.answered.length;
+      q.options.forEach((o) => {
+        count += o.answered.length;
+      });
     });
     return (count / this.total()).toPrecision(2);
   }
@@ -45,8 +47,12 @@ export class RoomInfoComponent implements OnInit {
     return this.room.questions.filter((q) => {
       return q.open;
     }).filter((q) => {
-      return !q.answered.some((n) => {
-        return n == this.authService.user.id;
+      let answered: boolean = false;
+      q.options.forEach((o) => {
+        answered = answered 
+          || o.answered.findIndex((id) => {
+            return id == this.authService.user.id;
+          }) != -1;
       });
     }).length;
   }

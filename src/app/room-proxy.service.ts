@@ -43,7 +43,7 @@ export class RoomProxyService {
 
   // join a room
   join(number, password?) {
-
+    // TODO
   }
 
   // connect to a room
@@ -53,6 +53,7 @@ export class RoomProxyService {
     });
     wildcard(io.Manager)(this.socket);
 
+    // TODO
     // TEST
     this.socket.emit('answer::create', { 'text': 'hello' });
     console.log('io sent');
@@ -63,7 +64,7 @@ export class RoomProxyService {
 
   // disconnect from the current room
   disconnect() {
-
+    // TODO
   }
 
   // do a patch on the room

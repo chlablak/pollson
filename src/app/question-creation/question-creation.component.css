@@ -1,0 +1,5 @@
+input[type="checkbox"] {
+    width: 100%;
+    vertical-align: middle;
+    transform: scale(2, 2);
+}

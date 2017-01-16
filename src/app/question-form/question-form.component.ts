@@ -23,8 +23,8 @@ export class QuestionFormComponent implements OnInit {
   }
 
   // emit the choice
-  choice(index) {
-    this.onChoice.emit({ 'index': index });
+  choice(option) {
+    this.onChoice.emit({ 'option': option });
   }
 
 }

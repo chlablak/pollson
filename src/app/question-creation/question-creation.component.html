@@ -10,7 +10,10 @@
   <!-- options -->
   <div class="12u$" *ngFor="let option of question.options; let i = index">
     <div class="row">
-      <div class="10u 12u$(mobile)">
+      <div class="1u 12u$(mobile)">
+        <input type="checkbox" [(ngModel)]="option.answer" (change)="setAnswer(option)">
+      </div>
+      <div class="9u 12u$(mobile)">
         <input type="text" placeholder="Option {{i+1}}" [(ngModel)]="option.text">
       </div>
       <div class="2u$ 12u$(mobile) right">
