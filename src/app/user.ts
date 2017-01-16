@@ -1,7 +1,8 @@
 export class User {
 
     public name: string;
-    public id: string = null;
+    public _id: string = null;
+    public _roomID?: string = null; // for guest
 
     constructor(
         public email: string,

@@ -51,7 +51,7 @@ export class RoomInfoComponent implements OnInit {
       q.options.forEach((o) => {
         answered = answered 
           || o.answered.findIndex((id) => {
-            return id == this.authService.user.id;
+            return id == this.authService.user._id;
           }) != -1;
       });
     }).length;

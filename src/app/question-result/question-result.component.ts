@@ -32,7 +32,7 @@ export class QuestionResultComponent implements OnInit {
   hasAnswered(option) {
     return this.authService.authentificated() 
       && option.answered.findIndex((id) => {
-        return id == this.authService.user.id;
+        return id == this.authService.user._id;
       }) != -1;
   }
 

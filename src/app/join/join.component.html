@@ -1,5 +1,5 @@
 <!-- This section is about the room connection and disconnection -->
-<section>
+<section *ngIf="!joined()">
   <div class="row">
     <div class="7u 12u$(mobile)">
       <p>
@@ -11,15 +11,35 @@
       <small>room number</small>
       <app-input-number count="4" (onFullfilled)="setRoomNumber($event)"></app-input-number>
     </div>
-    <div class="3u$ 12u$(mobile)" [hidden]="!hasPassword()">
+    <div class="3u$ 12u$(mobile)" [hidden]="!needPassword()">
       <small>room password</small>
       <app-input-number count="4" (onFullfilled)="setRoomPassword($event)"></app-input-number>
     </div>
   </div>
+  <hr>
+  <p>{{status}}</p>
 </section>
-<hr>
+<section *ngIf="joined()">
+  <div class="row" *ngIf="!creation()">
+    <div class="8u 12u$(mobile)">
+      You are connected to the room.
+    </div>
+    <div class="4u$ 12u$(mobile)">
+      <button (click)="leave()">Leave</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="creation()">
+    <div class="12u$">
+      <p>You are the room creator.</p>
+    </div>
+  </div>
+</section>
 
-<!-- This section show the room -->
-<section>
-  <small [hidden]="joined()">{{status()}}</small>
+<!-- Questions -->
+<section *ngIf="joined()">
+  <hr>
+  <div *ngFor="let q of questions()">
+    <app-question-form *ngIf="!hasAnswered(q)" [question]="q" (onChoice)="answerTo($event)"></app-question-form>
+    <app-question-result *ngIf="hasAnswered(q)" [question]="q"></app-question-result>
+  </div>
 </section>

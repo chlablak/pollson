@@ -17,6 +17,9 @@ export class AuthService {
   // current token
   public token: string = null;
 
+  // logged as guest ?
+  public guest: boolean = null;
+
   // AuthHttp wrapper
   private authHttp: AuthHttp = null;
 
@@ -28,6 +31,7 @@ export class AuthService {
     // get data from storage
     this.user = this.localStorage.getObject('user');
     this.token = this.localStorage.getItem('token');
+    this.guest = this.localStorage.getObject('guest');
 
     // configure the wrapper
     this.authHttp = new AuthHttp(new AuthConfig({
@@ -39,15 +43,17 @@ export class AuthService {
 
   // tells if their is an authentificated user
   authentificated() {
-    return this.user !== null;
+    return this.user !== null && !this.guest;
   }
 
   // log out
   leave() {
     this.user = null;
     this.token = null;
+    this.guest = null;
     this.localStorage.removeItem('token');
     this.localStorage.removeItem('user');
+    this.localStorage.removeItem('guest');
   }
 
   // create a new user
@@ -83,9 +89,40 @@ export class AuthService {
         // save current user and his token
         this.token = data.token;
         this.user = user;
-        this.user.id = data.id;
+        this.user._id = data.id;
+        this.guest = false;
         this.localStorage.setItem('token', this.token);
         this.localStorage.setObject('user', this.user);
+        this.localStorage.setObject('guest', this.guest);
+      });
+  }
+
+  // log as guest
+  logAsGuest(roomid: number, roompwd: number) {
+    this.leave();
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ 'headers': headers });
+    let payload = { room: roomid };
+    if(roompwd != null)
+      payload['password'] = roompwd;
+    return this.baseHttp.post(
+        environment.restApiUrl + 'guests', 
+        JSON.stringify(payload), 
+        options
+      )
+      .map((res) => res.json())
+      .toPromise()
+      .then((data) => {
+
+        // save current user and his token
+        this.token = data.token;
+        this.user = new User(data.guestId + '@guest.pollson');
+        this.user._id = data.guestId;
+        this.user._roomID = data.roomId;
+        this.guest = true;
+        this.localStorage.setItem('token', this.token);
+        this.localStorage.setObject('user', this.user);
+        this.localStorage.setObject('guest', this.guest);
       });
   }
 

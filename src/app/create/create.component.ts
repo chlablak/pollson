@@ -39,8 +39,8 @@ export class CreateComponent implements OnInit {
     // creation
     this.roomProxyService.create().then(() => {
       this.roomName = this.roomProxyService.room.name;
-    }).catch((err) => {
-      alert('An error occured: ' + JSON.stringify(err));
+    }).catch(() => {
+      alert('An error occured');
     });
   }
 
@@ -58,8 +58,8 @@ export class CreateComponent implements OnInit {
   setRoomPassword(event) {
     this.roomProxyService.update({
       password: event.value
-    }).catch((err) => {
-      alert("An error occured: " + JSON.stringify(err));
+    }).catch(() => {
+      alert('An error occured');
     });
   }
 
@@ -71,8 +71,8 @@ export class CreateComponent implements OnInit {
     }
     this.roomProxyService.update({
       name: this.roomName
-    }).catch((err) => {
-      alert("An error occured: " + JSON.stringify(err));
+    }).catch(() => {
+      alert('An error occured');
     });
   }
 
@@ -94,8 +94,8 @@ export class CreateComponent implements OnInit {
       value: this.question
     }).then(() => {
       this.cancelQuestion();
-    }).catch((err) => {
-      alert('An error occured: ' + JSON.stringify(err));
+    }).catch(() => {
+      alert('An error occured');
     });
   }
 
@@ -106,11 +106,26 @@ export class CreateComponent implements OnInit {
 
   // delete a question
   deleteQuestion(q) {
-    // TODO
+    this.roomProxyService.update({
+      op: 'remove',
+      path: '/questions',
+      value: { _id: q._id }
+    }).catch(() => {
+      alert('An error occured');
+    });
   }
 
   // toggle open/close 
   toggleQuestion(q) {
-    // TODO
+    this.roomProxyService.update({
+      op: 'replace',
+      path: '/questions',
+      value: {
+        _id: q._id,
+        open: !q.open
+      }
+    }).catch(() => {
+      alert('An error occured');
+    });
   }
 }
