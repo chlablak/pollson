@@ -100,6 +100,7 @@ export class RoomProxyService {
     wildcard(io.Manager)(this.socket);
     
     // listen to room changes
+    // (server is on Feathers framework, thus we listen to all event and we filter afterwards)
     this.socket.on('*', (data) => {
       if(data.data[0] == 'rooms patched') 
         this.setRoom(data.data[1]);
