@@ -96,6 +96,7 @@ export class RoomProxyService {
     
     // TEST
     this.socket.on('*', (data) => {
+      // TODO clean here
       console.log('io recv: ' + JSON.stringify(data));
       if(data.data[0] == 'rooms patched') {
         console.log('PATCH...');

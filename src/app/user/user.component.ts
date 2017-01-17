@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AuthService } from '../auth.service';
 import { Room } from '../room';
@@ -14,7 +15,8 @@ export class UserComponent implements OnInit {
   public rooms: Room[];
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    public toasterService: ToasterService
   ) {
     this.rooms = [];
   }
@@ -34,7 +36,7 @@ export class UserComponent implements OnInit {
       })
       .catch((err) => {
         console.log('[UserComponent] fetching error: ' + JSON.stringify(err));
-        alert('An error occured');
+        this.toasterService.pop('error', 'History', 'An error occured');
       });
 
     // TODO html

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AuthService } from '../auth.service';
 import { RoomProxyService } from '../room-proxy.service';
@@ -17,7 +18,8 @@ export class CreateComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public roomProxyService: RoomProxyService
+    public roomProxyService: RoomProxyService,
+    public toasterService: ToasterService
   ) {}
 
   ngOnInit() {
@@ -28,11 +30,11 @@ export class CreateComponent implements OnInit {
 
     // checks
     if(!this.authService.authentificated()) {
-      alert('You need to be logged in to create a room.');
+      this.toasterService.pop('info', 'Create', 'You need to be logged in to create a room');
       return;
     }
     if(this.roomProxyService.connected()) {
-      alert('Please leave your current joined room to start creating an other one.');
+      this.toasterService.pop('info', 'Create', 'Please leave your current joined room to start creating an other one');
       return;
     }
 
@@ -40,7 +42,7 @@ export class CreateComponent implements OnInit {
     this.roomProxyService.create().then(() => {
       this.roomName = this.roomProxyService.room.name;
     }).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Create', 'An error occured');
     });
   }
 
@@ -59,20 +61,20 @@ export class CreateComponent implements OnInit {
     this.roomProxyService.update({
       password: event.value
     }).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Set password', 'An error occured');
     });
   }
 
   // change the room name
   updateName() {
     if(this.roomName.length > 50) {
-      alert('The room name must not exceed 50 characters.');
+      this.toasterService.pop('info', 'Update name', 'The room name must not exceed 50 characters');
       return;
     }
     this.roomProxyService.update({
       name: this.roomName
     }).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Update name', 'An error occured');
     });
   }
 
@@ -83,7 +85,7 @@ export class CreateComponent implements OnInit {
     }).then(() => {
       this.roomProxyService.disconnect();
     }).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Close', 'An error occured');
     })
   }
 
@@ -101,7 +103,7 @@ export class CreateComponent implements OnInit {
     }).then(() => {
       this.cancelQuestion();
     }).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Validate', 'An error occured');
     });
   }
 
@@ -117,7 +119,7 @@ export class CreateComponent implements OnInit {
       path: '/questions',
       value: { _id: q._id }
     }).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Delete', 'An error occured');
     });
   }
 
@@ -131,7 +133,7 @@ export class CreateComponent implements OnInit {
         open: !q.open
       }
     }).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Open/Close', 'An error occured');
     });
   }
 

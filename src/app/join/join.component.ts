@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { AuthService } from '../auth.service';
 import { RoomProxyService } from '../room-proxy.service';
@@ -18,7 +19,8 @@ export class JoinComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public roomProxyService: RoomProxyService
+    public roomProxyService: RoomProxyService,
+    public toasterService: ToasterService
   ) {}
 
   ngOnInit() {
@@ -89,7 +91,7 @@ export class JoinComponent implements OnInit {
   // answer to a question
   answerTo(event) {
     this.roomProxyService.answer(event.option).catch(() => {
-      alert('An error occured');
+      this.toasterService.pop('error', 'Answering', 'An error occured');
     });
   }
 }
