@@ -58,13 +58,11 @@ export class RoomProxyService {
 
     // normal user
     if(this.authService.authentificated()) {
-      return this.authService.http()
-        .get(environment.restApiUrl + 'rooms?id=' + number)
-        .map((res) => res.json())
-        .toPromise()
-        .then((data) => {
-          console.log('DATA: ' + JSON.stringify(data));
-          // TODO
+      return this.authService.getRoomID(number, password)
+        .then(() => {
+          this.fetch().then(() => {
+            this.connect();
+          });
         });
     }
 

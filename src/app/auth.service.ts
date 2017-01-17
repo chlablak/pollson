@@ -126,6 +126,24 @@ export class AuthService {
       });
   }
 
+  // get room id
+  getRoomID(roomid: number, roompwd: number) {
+    let payload = { room: roomid };
+    if(roompwd != null)
+      payload['password'] = roompwd;
+    return this.http().post(
+        environment.restApiUrl + 'guests', 
+        JSON.stringify(payload)
+      )
+      .map((res) => res.json())
+      .toPromise()
+      .then((data) => {
+
+        // save room id
+        this.user._roomID = data.roomId;
+      });
+  }
+
   // get the wrapper
   http() {
     return this.authHttp;
