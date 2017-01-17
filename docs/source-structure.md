@@ -34,6 +34,7 @@ The files can be found in `src/app/`, terminated by `.service.ts`.
 | `QuestionCreation` | ... |
 | `QuestionForm` | ... |
 | `QuestionResult` | ... |
+| `RoomHistory` | ... |
 | `RoomInfo` | ... |
 | `User` | ... |
 | `UserLogin` | ... |
@@ -55,6 +56,7 @@ Here the components hierachy:
     - `QuestionResult`
   - `User`
     - `UserLogin`
+    - `RoomHistory`
   - `RoomInfo`
 
 ## Resources

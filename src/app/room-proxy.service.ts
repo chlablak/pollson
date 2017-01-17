@@ -104,8 +104,6 @@ export class RoomProxyService {
       if(data.data[0] == 'rooms patched') 
         this.setRoom(data.data[1]);
     });
-
-    // TODO ?
   }
 
   // disconnect from the current room
