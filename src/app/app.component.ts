@@ -18,7 +18,9 @@ export class AppComponent {
   ) {}
 
   disconnect() {
-      this.authService.leave();
-      this.toasterService.pop('info', 'Logout', 'Disconnection succeed !');
+    if(this.roomProxyService.connected())
+      this.roomProxyService.disconnect();
+    this.authService.leave();
+    this.toasterService.pop('info', 'Logout', 'Disconnection succeed !');
   }
 }

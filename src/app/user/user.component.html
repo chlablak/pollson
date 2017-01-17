@@ -7,5 +7,13 @@
     <h2>Hello <em>{{authService.user.name}}</em> !</h2>
   </header>
 
-  not impl. yet
+  <!-- History -->
+  <section>
+    <h3>History</h3>
+    <p>Old rooms you've created.</p>
+    <app-room-history *ngFor="let r of rooms" [room]="r"></app-room-history>
+    <hr>
+    <button (click)="fetch()">Reload</button>
+    <button (click)="loadMore()">Load more</button>
+  </section>
 </div>

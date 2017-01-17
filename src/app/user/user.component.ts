@@ -13,12 +13,14 @@ import { environment } from '../../environments/environment';
 export class UserComponent implements OnInit {
 
   public rooms: Room[];
+  public limit: number;
 
   constructor(
     public authService: AuthService,
     public toasterService: ToasterService
   ) {
     this.rooms = [];
+    this.limit = 5;
   }
 
   ngOnInit() {
@@ -28,17 +30,20 @@ export class UserComponent implements OnInit {
 
   fetch() {
     this.authService.http()
-      .get(environment.restApiUrl + 'rooms?owner=' + this.authService.user._id)
+      .get(environment.restApiUrl + 'rooms?owner=' + this.authService.user._id + '&$limit=' + this.limit + '&$sort=-createdAt')
       .map((res) => res.json())
       .toPromise()
       .then((data) => {
-        console.log(JSON.stringify(data));
+        this.rooms = data.data;
       })
       .catch((err) => {
         console.log('[UserComponent] fetching error: ' + JSON.stringify(err));
         this.toasterService.pop('error', 'History', 'An error occured');
       });
+  }
 
-    // TODO html
+  loadMore() {
+    this.limit += 5;
+    this.fetch();
   }
 }

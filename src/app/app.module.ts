@@ -19,6 +19,7 @@ import { QuestionCreationComponent } from './question-creation/question-creation
 import { QuestionResultComponent } from './question-result/question-result.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { RoomInfoComponent } from './room-info/room-info.component';
+import { RoomHistoryComponent } from './room-history/room-history.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RoomInfoComponent } from './room-info/room-info.component';
     QuestionCreationComponent,
     QuestionResultComponent,
     QuestionFormComponent,
-    RoomInfoComponent
+    RoomInfoComponent,
+    RoomHistoryComponent
   ],
   imports: [
     BrowserModule,

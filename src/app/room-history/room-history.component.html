@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="10u 12u$(mobile)">
+    <h5>{{room.name}}</h5>
+    <small>{{room.createdAt}}</small>
+  </div>
+  <div class="2u$ 12u$(mobile)">
+    <button *ngIf="!detail" (click)="toggleDetail()">More</button>
+    <button *ngIf="detail" (click)="toggleDetail()">Hide</button>
+  </div>
+  <div class="12u$">
+    <div class="row" *ngIf="detail">
+      <div class="6u 12u$(mobile)">
+        <span class="highlight">{{room.questions.length}}</span> questions
+      </div>
+      <div class="6u$ 12u$(mobile)">
+        <span class="highlight">{{totalVote()}}</span> total votes
+      </div>
+      <div class="6u 12u$(mobile)">
+        <span class="highlight">{{votePerQuestion()}}</span> votes per questions
+      </div>
+      <div class="6u$ 12u$(mobile)">
+        <span class="highlight">{{correctVote()}}%</span> correct answers
+      </div>
+      <div class="12u$">
+        <app-question-result *ngFor="let q of room.questions" [question]="q" [detail]="false"></app-question-result>
+      </div>
+    </div>
+  </div>
+</div>

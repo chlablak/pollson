@@ -14,6 +14,9 @@ export class QuestionResultComponent implements OnInit {
   @Input()
   question: Question;
 
+  @Input()
+  detail: boolean = true;
+
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
@@ -49,5 +52,9 @@ export class QuestionResultComponent implements OnInit {
     let total = this.total();
     let percentage = total > 0 ? this.question.options[index].answered.length / total : 0;
     return Math.round(percentage * 100) + '%';
+  }
+
+  toggleDetail() {
+    this.detail = !this.detail;
   }
 }

@@ -58,7 +58,14 @@ export class RoomProxyService {
 
     // normal user
     if(this.authService.authentificated()) {
-      // TODO
+      return this.authService.http()
+        .get(environment.restApiUrl + 'rooms?id=' + number)
+        .map((res) => res.json())
+        .toPromise()
+        .then((data) => {
+          console.log('DATA: ' + JSON.stringify(data));
+          // TODO
+        });
     }
 
     // guest
@@ -94,15 +101,10 @@ export class RoomProxyService {
     });
     wildcard(io.Manager)(this.socket);
     
-    // TEST
+    // listen to room changes
     this.socket.on('*', (data) => {
-      // TODO clean here
-      console.log('io recv: ' + JSON.stringify(data));
-      if(data.data[0] == 'rooms patched') {
-        console.log('PATCH...');
+      if(data.data[0] == 'rooms patched') 
         this.setRoom(data.data[1]);
-        console.log('DONE!');
-      }
     });
 
     // TODO ?
@@ -133,7 +135,6 @@ export class RoomProxyService {
   answer(option: Option) {
     return this.authService.http()
       .post(environment.restApiUrl + 'answers', {
-        roomId: this.room._id,
         answer: option._id
       })
       .toPromise()
@@ -146,6 +147,7 @@ export class RoomProxyService {
       });
   }
 
+  // set the room
   setRoom(room: Room) {
     this.room = room;
     this.localStorage.setObject('room', room);
