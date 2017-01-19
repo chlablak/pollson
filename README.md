@@ -5,7 +5,7 @@
 
 This repo contains the front-end web site for the pollson project.
 
-You can find the online version here: https://chlablak.github.io/pollson/
+You can find the online version here: http://pollson.herokuapp.com/ (or https://chlablak.github.io/pollson/)
 
 The repo for the back-end can be found at https://github.com/chlablak/pollson-server.
 
